@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>MWO DPI Slider</title>
+    <script
+        src="https://code.jquery.com/jquery-3.3.1.min.js"
+        integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+        crossorigin="anonymous"
+    ></script>
+    <script src="jquery-ui-1.12.1.custom/jquery-ui.js"></script>
+    <link rel="stylesheet" href="jquery-ui-1.12.1.custom/jquery-ui.min.css">
+</head>
+<body>
+<div>
+    Set Desired eDPI: <input id="edpi">
+    <br />
+    Multiplier: <input id="multiplier-value" readonly value="1">
+    <br />
+    <div id="multiplier">
+    <br />
+    DPI: <input id="dpi" readonly>
+    <br />
+</div>
+<script>
+    $('document').ready(function() {
+        var eDpiInput = $('#edpi')
+        var multiplierInput = $('#multiplier')
+        var dpiInput = $('#dpi')
+        var multiplierValue = $('#multiplier-value')
+
+        var multiplierSlider = multiplierInput.slider({
+            min: 0,
+            max: 1,
+            step: .01,
+            value: 1,
+            slide: function(e, ui) {
+                var multiplier = parseFloat(ui.value)
+                if (Number.isNaN(multiplier)) {
+                    return
+                }
+                calculate(multiplier)
+                multiplierValue.val(multiplier)
+            }
+        })
+
+        function calculate(multiplier) {
+            var edpiValue = parseInt(eDpiInput.val(), 10)
+            if (Number.isNaN(edpiValue)) {
+                return
+            }
+            dpiInput.val(multiplier * edpiValue);
+        }
+
+        eDpiInput.on('keyup', function() {
+            calculate(multiplierSlider.slider('value'))
+        })
+    })
+</script>
+</body>
+</html>
