@@ -49,7 +49,7 @@
             if (Number.isNaN(edpiValue)) {
                 return
             }
-            dpiInput.val(multiplier * edpiValue);
+            dpiInput.val(edpiValue * (1 / multiplier))
         }
 
         eDpiInput.on('keyup', function() {
