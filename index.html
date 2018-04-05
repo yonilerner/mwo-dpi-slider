@@ -37,6 +37,7 @@
             step: .01,
             value: 1,
             slide: function(e, ui) {
+                multiplierValue.val(ui.value)
                 if (!elemToUpdateOnSliderChange) {
                     return
                 }
@@ -45,7 +46,6 @@
                     return
                 }
                 calculate(multiplier, elemToUpdateOnSliderChange)
-                multiplierValue.val(multiplier)
             }
         })
 
