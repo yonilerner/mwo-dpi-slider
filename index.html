@@ -11,13 +11,28 @@
     <script src="jquery-ui-1.12.1.custom/jquery-ui.js"></script>
     <link rel="stylesheet" href="jquery-ui-1.12.1.custom/jquery-ui.min.css">
 </head>
+<style>
+    #multiplier-table {
+        width: 70%;
+    }
+    #multiplier-table td:last-child {
+        width: 100%;
+    }
+    #multiplier-value {
+        width: 30px;
+        background-color: lightgray;
+    }
+</style>
 <body>
 <div>
     eDPI: <input id="edpi">
-    <br />
-    Multiplier: <input id="multiplier-value" readonly value="1">
-    <br />
-    <div id="multiplier" style="width: 90%"></div>
+    <br /><br />
+    <table id="multiplier-table">
+        <tr>
+            <td><input id="multiplier-value" readonly value="1"></td>
+            <td><div id="multiplier"></div></td>
+        </tr>
+    </table>
     <br />
     DPI: <input id="dpi">
     <br />
