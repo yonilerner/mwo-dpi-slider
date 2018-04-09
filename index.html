@@ -69,13 +69,12 @@
             if (Number.isNaN(newVal)) {
                 return
             }
-            var calculatedVal = newVal * multiplier
 
             if (inputElem.attr('id') === 'dpi') {
-                eDpiInput.val(calculatedVal)
+                eDpiInput.val(newVal * multiplier)
                 elemToUpdateOnSliderChange = dpiInput
             } else {
-                dpiInput.val(calculatedVal)
+                dpiInput.val(newVal * (1 / multiplier))
                 elemToUpdateOnSliderChange = eDpiInput
             }
         }
