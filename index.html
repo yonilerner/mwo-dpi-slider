@@ -71,10 +71,10 @@
             }
 
             if (inputElem.attr('id') === 'dpi') {
-                eDpiInput.val(newVal * multiplier)
+                eDpiInput.val(Math.round(newVal * multiplier))
                 elemToUpdateOnSliderChange = dpiInput
             } else {
-                dpiInput.val(newVal * (1 / multiplier))
+                dpiInput.val(Math.round(newVal * (1 / multiplier)))
                 elemToUpdateOnSliderChange = eDpiInput
             }
         }
